@@ -9,11 +9,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float velocidad;
     [SerializeField] private float velocidadMax;
     [SerializeField] private float friccionSuelo;
-    [SerializeField] private bool colPies = false;
-
-    [Header("VALORES INFORMATIVOS")]
     [SerializeField] private float fuerzaSalto;
 
+
+    [Header("VALORES INFORMATIVOS")]
+    [SerializeField] private bool colPies = false;
     private Rigidbody2D rPlayer;
     private Animator aPlayer;
     private float h;
