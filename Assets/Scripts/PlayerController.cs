@@ -5,15 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 
 {
-    [Header("VALORES CONFIGURABLES")]
-    [SerializeField] private float velocidad;
-    [SerializeField] private float velocidadMax;
-    [SerializeField] private float friccionSuelo;
-    [SerializeField] private float fuerzaSalto;
+    
+    public float velocidad;
+    public float velocidadMax;
+    public float friccionSuelo;
+    public bool colPies = false;
 
+    public float fuerzaSalto;
 
-    [Header("VALORES INFORMATIVOS")]
-    [SerializeField] private bool colPies = false;
     private Rigidbody2D rPlayer;
     private Animator aPlayer;
     private float h;
