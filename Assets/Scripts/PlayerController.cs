@@ -7,12 +7,13 @@ public class PlayerController : MonoBehaviour
 {
     public float velocidad;
     public float velocidadMax;
-
+    public float friccionSuelo;
     public bool colPies = false;
 
     public float fuerzaSalto;
 
     private Rigidbody2D rPlayer;
+    private Animator aPlayer;
     private float h;
 
     private bool miraDerecha = true;
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rPlayer = GetComponent<Rigidbody2D>();
+        aPlayer = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -28,7 +30,9 @@ public class PlayerController : MonoBehaviour
     {
 
         giraPlayer(h);
-
+        aPlayer.SetFloat("VelocidadX", Mathf.Abs(rPlayer.velocity.x));
+        aPlayer.SetFloat("VelocidadY", rPlayer.velocity.y);
+        aPlayer.SetBool("TocaSuelo", colPies);
         //Salto
         colPies = CheckGround.colPies;
         if(Input.GetButtonDown("Jump") && colPies)
@@ -45,6 +49,13 @@ public class PlayerController : MonoBehaviour
         rPlayer.AddForce(Vector2.right * velocidad * h);
         float limiteVelocidad = Mathf.Clamp(rPlayer.velocity.x, -velocidadMax, velocidadMax);
         rPlayer.velocity = new Vector2(limiteVelocidad, rPlayer.velocity.y);
+
+        if(h==0 && colPies)
+        {
+            Vector3 velocidadArreglada = rPlayer.velocity;
+            velocidadArreglada.x *= friccionSuelo;
+            rPlayer.velocity = velocidadArreglada;
+        }
     }
 
     void giraPlayer(float horizontal)
