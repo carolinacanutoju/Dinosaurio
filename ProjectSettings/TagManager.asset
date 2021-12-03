@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terreno
+  - PlataformaMovil
+  - Pinchos
+  - CaidaAlVacio
   layers:
   - Default
   - TransparentFX
