@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MenuController : MonoBehaviour
 {
@@ -47,7 +46,7 @@ public class MenuController : MonoBehaviour
 
     private void AjustaOpciones()
     {
-        
+        throw new NotImplementedException();
     }
 
     void Update()
@@ -69,11 +68,6 @@ public class MenuController : MonoBehaviour
                 if (tiempoV > tiempoCambiaOpcion) tiempoV = 0;
             }
             tiempoV += Time.deltaTime;
-        }
-        if (Input.GetButtonDown("Submit") && !pulsadoSubmit)
-        {
-            snd_seleccion.Play();
-            if (opcionMenu == 1) SceneManager.LoadScene("SampleScene");
         }
     }
     void SeleccionMenu(int op)
